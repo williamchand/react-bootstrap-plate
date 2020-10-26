@@ -1,4 +1,4 @@
-# React Bootstrap Plate [![Netlify Status](https://api.netlify.com/api/v1/badges/c87ca310-3b6e-4786-8746-d8219bd2cc6f/deploy-status)](https://app.netlify.com/sites/awesome-brattain-372325/deploys)
+# React Bootstrap Plate [![Netlify Status](https://api.netlify.com/api/v1/badges/167b018f-7613-4d16-b89e-fd1a06d66b88/deploy-status)](https://app.netlify.com/sites/suspicious-goldberg-23ce95/deploys)
 React Bootstrap Plate is a React with Bootstrap integration framework to help beginners start learning web apps through the most basic tutorials.
 
 ## Overview
@@ -505,4 +505,4 @@ Application Deployment will using [netlify](https://www.netlify.com/) framework.
 - Connect with github account.
 - Choose repository that you want to deploy.
 - Setting build command `yarn build` and publish directory `build/`.
-- Access example site at [https://awesome-brattain-372325.netlify.app/home](https://awesome-brattain-372325.netlify.app/home).
+- Access example site at [https://suspicious-goldberg-23ce95.netlify.app/](https://suspicious-goldberg-23ce95.netlify.app/).
