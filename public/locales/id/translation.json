@@ -11,5 +11,8 @@
 	"searchPage": {
     "search": "Cari",
 		"placeHolder": "Nama film"
+	},
+	"moviePage": {
+		"error": "Error film tidak dapat ditemukan"
 	}
 }

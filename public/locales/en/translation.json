@@ -11,5 +11,8 @@
 	"searchPage": {
 		"search": "Search",
 		"placeHolder": "Movie's name"
+	},
+	"moviePage": {
+		"error": "Error movie's not found"
 	}
 }

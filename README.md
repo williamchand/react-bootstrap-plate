@@ -1,44 +1,44 @@
-# Template React Bootstrap [![Netlify Status](https://api.netlify.com/api/v1/badges/c87ca310-3b6e-4786-8746-d8219bd2cc6f/deploy-status)](https://app.netlify.com/sites/awesome-brattain-372325/deploys)
-Template React Bootstrap adalah suatu kerangka kerja integrasi react dengan Bootstrap untuk membantu pemula mulai mempelajari aplikasi web melalui tutorial paling dasar.
+# React Bootstrap Plate [![Netlify Status](https://api.netlify.com/api/v1/badges/c87ca310-3b6e-4786-8746-d8219bd2cc6f/deploy-status)](https://app.netlify.com/sites/awesome-brattain-372325/deploys)
+React Bootstrap Plate is a React with Bootstrap integration framework to help beginners start learning web apps through the most basic tutorials.
 
-## Gambaran
-Pada tutorial kali ini, kita akan membuat aplikasi web yang menampilkan daftar film menggunakan API OMDb. Aplikasi ini akan dapat menerima input kata kunci dan  merespon dengan menampilkan film yang sesuai dengan kata kunci. Hal utama yang akan kita jelajahi adalah bagaimana caranya:
-- Membuat aplikasi satu halaman.
-- Membuat halaman banyak bahasa.
-- Interaksi antara react dengan API.
+## Overview
+In this tutorial, we will create a web application that displays a list of movies using the OMDb API. This application will be able to accept keyword input and respond by displaying movies that match the keywords. The main thing we're going to explore is how:
+- Create single page application.
+- Create multi language page.
+- Interaction between react and data.
 
-## Prasyarat
-- Unduh dan instal Node v8.10+, npm v5.6+ and Yarn v1.2.0+.
-- Unduh dan instal JDK.
-- Unduh dan instal Visual Studio Code.
-- Membuat akun github.
-- Membuat akun netlify.
+## Prerequisite
+- Download and install Node v8.10+, npm v5.6+ and Yarn v1.2.0+.
+- Download and install JDK.
+- Download and install Visual Studio Code.
+- Create github account.
+- Create netlify account.
 
 ### Create React App
-Project ini menggunakan dasar dari [Create React App](https://github.com/facebook/create-react-app).
+This project using [Create React App](https://github.com/facebook/create-react-app) as base.
 
 `npx create-react-app template-react-bootstrap`
 
 ### React-i18next
-[React-i18next](https://react.i18next.com/) adalah kerangka internasionalisasi bahasa yang terbaik untuk React / React Native yang didasarkan pada i18next.
+[React-i18next](https://react.i18next.com/) is the best language internationalization framework for which React / React Native is based on i18next.
 
 `yarn add react-i18next i18next i18next-http-backend i18next-browser-languagedetector`
 
 ### React Router
-Perutean URL deklaratif menggunakan [React Router](https://reactrouter.com/).
+Declarative URL routing using [React Router](https://reactrouter.com/).
 
 `yarn add react-router react-router-dom`
 
 ### React Bootstrap
-React-Bootstrap menggantikan Bootstrap JavaScript. Setiap komponen telah dibangun dari awal sebagai komponen React sebenarnya, tanpa dependensi yang tidak diperlukan seperti jQuery. 
-Menginstal dependensi dari library [React Bootstrap](https://react-bootstrap.github.io/getting-started/introduction).
+React-Bootstrap replaces Bootstrap JavaScript. Each component has been built from scratch as a true React component, without unnecessary dependencies like jQuery.
+Install dependencies from libraries [React Bootstrap](https://react-bootstrap.github.io/getting-started/introduction).
 
 `yarn add react-bootstrap bootstrap react-router-bootstrap`
 
 ## Tutorial
 
-### Menambahkan browser router ke src/index.js
-[BrowserRouter](https://reactrouter.com/web/api/BrowserRouter) API riwayat HTML5 (pushState, replaceState, dan popstate event) untuk menjaga UI Anda tetap sinkron dengan URL.
+### Add browserRouter to src/index.js
+[BrowserRouter](https://reactrouter.com/web/api/BrowserRouter) HTML5 history API (pushState, replaceState, and popstate event) to keep your UI in sync with URLs.
 ```
 import { BrowserRouter as Router } from 'react-router-dom';
 ...................
@@ -49,11 +49,11 @@ import { BrowserRouter as Router } from 'react-router-dom';
 </React.StrictMode>
 ```
 
-### Aset gambar foto profil
-Menambahkan aset gambar foto profil pada public/assets/creators.jpg.
+### Photo profile image asset
+Add photo profile image asset at public/assets/creators.jpg.
 
-### Mengkonfigurasi internasionalisasi
-Mengkonfigurasi [i18n](https://react.i18next.com/latest/using-with-hooks) dengan file src/i18n.js dengan konten.
+### Internationalization configuration
+Configuration [i18n](https://react.i18next.com/latest/using-with-hooks) with file src/i18n.js with content.
 ```
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
@@ -74,12 +74,12 @@ i18n.use(Backend)
 
 export default i18n;
 ```
-Menambahkan file tersebut ke aplikasi melalui src/index.js `import './i18n';`.
+Add file to application src/index.js `import './i18n';`.
 
-### Koleksi translasi bahasa 
-Menempatkan aset koleksi translasi bahasa pada public/locales/{language_code}/translation.json.
+### Language translation collection 
+Put collection language translation asset at public/locales/{language_code}/translation.json.
 
-Versi bahasa
+Version indonesian
 ```
 {
 	"header": {
@@ -94,10 +94,13 @@ Versi bahasa
 	"searchPage": {
     "search": "Cari",
 		"placeHolder": "Nama film"
+	},
+	"moviePage": {
+		"error": "Error film tidak dapat ditemukan"
 	}
 }
 ```
-Versi inggris
+Version english
 ```
 {
 	"header": {
@@ -112,16 +115,19 @@ Versi inggris
 	"searchPage": {
 		"search": "Search",
 		"placeHolder": "Movie's name"
+	},
+	"moviePage": {
+		"error": "Error movie's not found"
 	}
 }
 ```
 
-### Memindahkan file App.* ke folder components
-Memindahkan file App.* ke folder components.
-Pada src/index.js mengganti sumber impor file `import App from './components/App';`.
+### Move file App.* to components folder
+Move file App.* to components folder.
+At src/index.js change file source import `import App from './components/App';`.
 
-### Inisialisasi App.js
-Menginisialisasi file App.js dengan internasionalisasi dan router.
+### Initialization App.js
+Initialization file App.js with internationalization and router.
 ```
 import React, { Suspense } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -148,8 +154,8 @@ function App() {
 export default App;
 ```
 
-### Navigasi aplikasi
-Menambahkan Fitur [navigasi](https://react-bootstrap.github.io/components/navs/) pada aplikasi melalui src/components/header/index.js.
+### Application Navigation
+Add [navigation](https://react-bootstrap.github.io/components/navs/) feature through src/components/header/index.js.
 ```
 import React from 'react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
@@ -177,7 +183,7 @@ function Header() {
 
 export default Header;
 ```
-Mengimpor header melalui src/components/App.js.
+import header through src/components/App.js.
 ```
 import Header from './header';
 ...................
@@ -187,8 +193,8 @@ import Header from './header';
 ...................
 ```
 
-### Memilih bahasa melalui navigasi
-Memilih bahasa dengan menggunakan dropdown bootstrap pada navigasi src/components/header/index.js.
+### Choose language using navigation
+Choose language using dropdown bootstrap at navigation src/components/header/index.js.
 ```
 ...................
   const { t, i18n } = useTranslation();
@@ -210,15 +216,15 @@ Memilih bahasa dengan menggunakan dropdown bootstrap pada navigasi src/component
 
 export default Header;
 ```
-Beserta file pada navigasi src/components/header/index.css.
+Add style page src/components/header/index.css.
 ```
 .language > a {
   color: #FFFFFF;
 }
 ```
 
-### Konten aplikasi
-Menambahkan konten pada tiap rute URL pada aplikasi melalui src/components/content/index.js.
+### Application content
+Add content every URL route at application through src/components/content/index.js.
 ```
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
@@ -239,8 +245,8 @@ function Content() {
 export default Content;
 ```
 
-### Menambahkan halaman rumah
-Menambahkan halaman rumah memuat profil diri menggunakan [kartu](https://react-bootstrap.github.io/components/cards/) src/components/component/home/index.js.
+### Add homepage
+Add homepage to load profile using [card](https://react-bootstrap.github.io/components/cards/) src/components/component/home/index.js.
 ```
 import React from 'react';
 import { Card } from 'react-bootstrap';
@@ -266,7 +272,7 @@ function HomePage() {
 
 export default HomePage;
 ```
-Mengimpor halaman rumah pada src/components/content/index.js.
+import homepage at src/components/content/index.js.
 ```
 import HomePage from '../component/home';
 ...................
@@ -275,8 +281,8 @@ import HomePage from '../component/home';
 </Route>
 ```
 
-### Membuat konteks pencarian
-Membuat [konteks](https://reactjs.org/docs/context.html) pencarian src/context/search/reducer.js.
+### Create search context
+create search [context](https://reactjs.org/docs/context.html) src/context/search/reducer.js.
 ```
 const cases = {
   MOVIE_VALUE: (state, payload) => ({
@@ -291,7 +297,7 @@ const reducer = (state, action) => {
 
 export default reducer;
 ```
-Memanggilnya pada src/context/search/index.js.
+Call it at src/context/search/index.js.
 ```
 import React, { createContext, useReducer } from 'react';
 import { node } from 'prop-types';
@@ -313,8 +319,8 @@ SearchProvider.propTypes = {
 };
 ```
 
-### Komponen input search
-Membangun komponen untuk melakukan input search dengan [useState](https://reactjs.org/docs/hooks-state.html) dan [grup input](https://react-bootstrap.github.io/components/input-group/) bootstrap src/components/component/search/search.js.
+### Input search component
+Build component to do input search [useState](https://reactjs.org/docs/hooks-state.html) dan [grup input](https://react-bootstrap.github.io/components/input-group/) bootstrap src/components/component/search/search.js.
 ```
 import React, { useContext, useState } from 'react';
 
@@ -358,57 +364,90 @@ function SearchView() {
 export default SearchView;
 ```
 
-### Komponen output search
-Membangun komponen untuk menampilkan output search dengan [useEffect](https://reactjs.org/docs/hooks-effect.html) dan [fetch](https://reactjs.org/docs/faq-ajax.html) 
-api src/components/component/search/movie.js.
+### Component output search
+Build component to show output search [useEffect](https://reactjs.org/docs/hooks-effect.html) and data src/components/component/search/movie.js.
 ```
 import React, { useContext, useEffect, useState } from 'react';
 
 import { SearchContext } from '../../../context/search';
-import { Card, Alert, Row, Col, Spinner } from 'react-bootstrap';
+import { Card, Alert, Row, Col } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
+
+const movieList = [
+  {
+    en: {
+      Title: "Captain Marvel",
+      Plot: "Carol Danvers becomes one of the universe's most powerful heroes when Earth is caught in the middle of a galactic war between two alien races."
+    },
+    id: {
+      Title: "Kapten Marvel",
+      Plot: "Carol Danvers menjadi salah satu pahlawan terkuat di alam semesta saat Bumi terjebak di tengah perang galaksi antara dua ras alien.",
+    }
+  },
+  {
+    en: {
+      Title: "Spiderman",
+      Plot: "On a school trip, high school senior Peter Parker visits a Columbia University genetics laboratory, where he is bitten by a genetically engineered 'super spider' that escaped from containment and seemingly falls ill after returning home."
+    },
+    id: {
+      Title: "Spiderman",
+      Plot: "Dalam perjalanan sekolah, senior sekolah menengah Peter Parker mengunjungi laboratorium genetika Universitas Columbia, di mana ia digigit oleh 'laba-laba super' rekayasa genetika yang lolos dari penahanan dan tampaknya jatuh sakit setelah kembali ke rumah.",
+    }
+  },
+  {
+    en: {
+      Title: "Twilight",
+      Plot: "It focuses on the development of a personal relationship between teenager Bella Swan (Kristen Stewart) and vampire Edward Cullen (Robert Pattinson), and the subsequent efforts of Edward and his family to keep Bella safe from a separate group of hostile vampires."
+    },
+    id: {
+      Title: "Twilight",
+      Plot: "Ini berfokus pada pengembangan hubungan pribadi antara remaja Bella Swan (Kristen Stewart) dan vampir Edward Cullen (Robert Pattinson), dan upaya selanjutnya dari Edward dan keluarganya untuk menjaga Bella aman dari kelompok vampir bermusuhan yang terpisah.",
+    }
+  },
+  {
+    en: {
+      Title: "The Incredibles 2",
+      Plot: "After the death of Syndrome, the Incredibles and Frozone battle the Underminer. They prevent him from destroying City Hall but are unable to stop him from robbing a bank and escaping."
+    },
+    id: {
+      Title: "The Incredibles 2",
+      Plot: "Setelah Syndrome mati, Incredibles dan Frozone bertempur melawan Underminer. Mereka mencegahnya dari menghancurkan Balai Kota tetapi tidak dapat menghentikannya untuk merampok bank dan melarikan diri.",
+    }
+  },
+];
 
 function MovieView() {
+  const {t, i18n} = useTranslation();
   const [search] = useContext(SearchContext);
   const [movie, setMovie] = useState({});
-  const [isLoading, setLoading] = useState(false);
+  const searchMovie = search => {
+    return movieList.find(movie => movie['en'].Title.toLowerCase().includes(search.toLowerCase()) || 
+                                  movie['id'].Title.toLowerCase().includes(search.toLowerCase()));
+  };
   useEffect(() => {
     setMovie({});
-    if(search.movie){
-      setLoading(true);
-      fetch('https://www.omdbapi.com/?i=tt3896198&apikey=1a9ae8c0&t='+search.movie.toLowerCase()).then(res=> res.json())
-        .then(response => {
-          setLoading(false);
-          setMovie(response);
-        })
-        .catch(()=>{
-          setLoading(false);
-          setMovie({});
-        });
+    if (search.movie) {
+      const movie = searchMovie(search.movie);
+      setMovie(movie ? movie : {error: 'Error not found'});
     }
-  },[search, setMovie, setLoading]);
-  
+  },[search, setMovie, i18n.language]);
+
   return (
     <Row>
       <Col md={{ span: 4, offset: 4 }}>
-        {isLoading && (<div className="mt-5 d-flex justify-content-center"><Spinner animation="grow" /></div>)}
-        {movie.Response === "True" && (
+        {movie['en'] && (
           <Card>
-            {movie.Poster !== "N/A" && (
-              <Card.Img variant="top" src={movie.Poster} alt="none"/>
-            )}
             <Card.Body>
-              <Card.Title>{movie.Title}</Card.Title>
-              {movie.Plot !== "N/A" && (
+              <Card.Title>{movie[i18n.language].Title}</Card.Title>
                 <Card.Text>
-                  {movie.Plot}
+                  {movie[i18n.language].Plot}
                 </Card.Text>
-              )}
             </Card.Body>
           </Card>
         )}
-        {movie.Response === "False" && (
+        {movie['error'] && (
           <Alert variant='warning'>
-            {movie.Error}
+            {t('moviePage.error')}
           </Alert>
         )}
       </Col>
@@ -418,9 +457,8 @@ function MovieView() {
 
 export default MovieView;
 ```
-Anda perlu mengganti apikey dan i dari https://www.omdbapi.com/?i=null&apikey=null.
-### Menambahkan halaman pencarian
-Menambahkan halaman pencarian beserta komponennya pada rute URL src/components/component/search/index.js.
+### Add search page
+Add search page with route URL component src/components/component/search/index.js.
 ```
 import React from 'react';
 
@@ -439,7 +477,7 @@ function SearchPage() {
 
 export default SearchPage;
 ```
-Mengimpor halaman pencarian pada src/components/content/index.js.
+import search page at src/components/content/index.js.
 ```
 import SearchPage from '../component/search';
 ...................
@@ -448,23 +486,23 @@ import SearchPage from '../component/search';
 </Route>
 ```
 
-### Menonaktifkan debug mode pada React-i18next
-Menonaktifkan debug mode pada React-i18next dengan mengubah konfigurasi src/i18n.js `debug: false`.
+### Deactivate debug mode React-i18next
+Deactivate debug mode React-i18next by changing configuration src/i18n.js `debug: false`.
 
-### Fungsionalitas PWA 
-Jika ingin agar aplikasi bekerja offline dan lebih cepat memuat halaman tambahkan [PWA](https://bit.ly/CRA-PWA) di file src/index.js ubah menjadi `serviceWorker.register();`.
+### Functionality PWA 
+If you want the application to work offline and load pages faster, add [PWA] (https://bit.ly/CRA-PWA) in the src/index.js file, change it to `serviceWorker.register();`.
 
 ### `yarn start`
-Menjalankan aplikasi pada mode pengembangan.<br />
-Buka [http://localhost:3000](http://localhost:3000) untuk melihat halaman di browser.
-halaman memuat ulang saat melakukan edit.<br />
-kamu juga dapat melihat error pada konsol.
+Runs the app in development mode.<br />
+Open http://localhost:3000 to view it in the browser.
+The page will automatically reload if you make changes to the code.<br />
+You will see the build errors and lint warnings in the console.
 
-### Penyebaran
-Pada penyebaran aplikasi akan digunakan kerangka dari [netlify](https://www.netlify.com/).
-- Login ke akun netlify.
-- Klik new site from github.
-- Sambungkan dengan akun github.
-- Pilih repository yang ingin disebarkan.
-- Setting build command `yarn build` dan publish directory `build/`.
-- Akses situs contoh pada [https://awesome-brattain-372325.netlify.app/home](https://awesome-brattain-372325.netlify.app/home).
+### Deployment
+Application Deployment will using [netlify](https://www.netlify.com/) framework.
+- Login to netlify account.
+- Click new site from github.
+- Connect with github account.
+- Choose repository that you want to deploy.
+- Setting build command `yarn build` and publish directory `build/`.
+- Access example site at [https://awesome-brattain-372325.netlify.app/home](https://awesome-brattain-372325.netlify.app/home).
